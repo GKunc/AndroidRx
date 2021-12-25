@@ -5,17 +5,14 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        >
+        tools:context=".FilterMapActivity">
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/hello_world"
+            android:id="@+id/example_2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
-    <Button android:text="Next" android:layout_width="185dp" android:layout_height="40dp"
-            android:id="@+id/button_navigate" tools:layout_editor_absoluteY="646dp"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"></Button>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
