@@ -31,11 +31,11 @@ public class MainActivity extends AppCompatActivity {
             emitter.onComplete();
         });
 
-        disposable = serverDownloadObservable.
-                observeOn(AndroidSchedulers.mainThread()).
-                subscribeOn(Schedulers.io()).
-                subscribe(integer -> {
-                    System.out.println("integer: " + integer);
+        disposable = serverDownloadObservable
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .doOnError(throwable -> System.out.println("ERROR OCCUR"))
+                .subscribe(integer -> {
                     updateTheUserInterface(integer); // this methods updates the ui
                 });
     }
@@ -62,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
         };
 
         Button button = (Button) findViewById(R.id.button_navigate);
-        button.setText("CLICK ME");
         button.setOnClickListener(onClickListener);
     }
 }

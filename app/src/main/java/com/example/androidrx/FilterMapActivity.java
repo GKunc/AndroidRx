@@ -31,10 +31,10 @@ public class FilterMapActivity extends AppCompatActivity {
         disposable = serverDownloadObservable
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
+                .doOnError(throwable -> System.out.println("ERROR OCCUR"))
                 .filter(i -> i % 2 == 0)
                 .map(i -> i * 10)
                 .subscribe(i -> {
-                    System.out.println("SHOW: " + i);
                     setTextField("SHOW: " + i);
                 });
     }
@@ -48,7 +48,6 @@ public class FilterMapActivity extends AppCompatActivity {
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("CLICK");
                 startActivity(new Intent(FilterMapActivity.this, BooksActivity.class));
             }
         };

@@ -12,8 +12,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            app:layout_constraintBottom_toTopOf="@+id/button_navigate" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/button_load_success"/>
 
     <TextView
             android:layout_width="wrap_content"
@@ -24,9 +25,21 @@
             tools:text="@tools:sample/cities"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/button_navigate"/>
+            app:layout_constraintBottom_toTopOf="@+id/button_load_success"/>
 
-    <Button android:text="Next" android:layout_width="185dp" android:layout_height="40dp"
+    <Button android:text="Load Books - success" android:layout_width="220dp" android:layout_height="40dp"
+            android:id="@+id/button_load_success"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintBottom_toTopOf="@+id/button_load_error"></Button>
+    
+    <Button android:text="Load Books - error" android:layout_width="220dp" android:layout_height="40dp"
+            android:id="@+id/button_load_error"
+            app:layout_constraintBottom_toTopOf="@+id/button_navigate"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"></Button>
+
+    <Button android:text="Next" android:layout_width="220dp" android:layout_height="40dp"
             android:id="@+id/button_navigate"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"></Button>
