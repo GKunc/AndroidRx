@@ -15,6 +15,7 @@ import io.reactivex.schedulers.Schedulers;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
+    Disposable disposable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,13 +31,21 @@ public class MainActivity extends AppCompatActivity {
             emitter.onComplete();
         });
 
-        serverDownloadObservable.
+        disposable = serverDownloadObservable.
                 observeOn(AndroidSchedulers.mainThread()).
                 subscribeOn(Schedulers.io()).
                 subscribe(integer -> {
                     System.out.println("integer: " + integer);
                     updateTheUserInterface(integer); // this methods updates the ui
                 });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (disposable != null && !disposable.isDisposed()) {
+            disposable.dispose();
+        }
     }
 
     public void updateTheUserInterface(int number) {
