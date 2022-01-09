@@ -1,0 +1,5 @@
+.subscribe(strings -> displayBooks(strings), throwable -> {
+                    progressBar.setVisibility(View.GONE);
+                    textView = (TextView) findViewById(R.id.text_view);
+                    textView.setText("Error while downloading");
+                });

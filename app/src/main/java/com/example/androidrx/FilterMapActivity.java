@@ -24,6 +24,7 @@ public class FilterMapActivity extends AppCompatActivity {
             for(int i = 0; i <= 10; i++) {
                 Thread.sleep(1000); // simulate delay
                 emitter.onNext(i);
+                emitter.onNext(i);
             }
             emitter.onComplete();
         });
@@ -34,7 +35,10 @@ public class FilterMapActivity extends AppCompatActivity {
                 .doOnError(throwable -> System.out.println("ERROR OCCUR"))
                 .filter(i -> i % 2 == 0)
                 .map(i -> i * 10)
+                .distinct()
+                .skipLast(1)
                 .subscribe(i -> {
+                    System.out.println("VALUE: " + i);
                     setTextField("SHOW: " + i);
                 });
     }
