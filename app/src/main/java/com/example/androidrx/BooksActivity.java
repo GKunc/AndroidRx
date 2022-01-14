@@ -43,7 +43,11 @@ public class BooksActivity extends AppCompatActivity {
         bookSubscription = booksObservable
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(strings -> displayBooks(strings));
+                .subscribe(strings -> displayBooks(strings), throwable -> {
+                    progressBar.setVisibility(View.GONE);
+                    textView = (TextView) findViewById(R.id.text_view);
+                    textView.setText("Error while downloading");
+                });
     }
 
     private void displayBooks(List<String> books) {
