@@ -35,8 +35,6 @@ public class FilterMapActivity extends AppCompatActivity {
                 .doOnError(throwable -> System.out.println("ERROR OCCUR"))
                 .filter(i -> i % 2 == 0)
                 .map(i -> i * 10)
-                .distinct()
-                .skipLast(1)
                 .subscribe(i -> {
                     System.out.println("VALUE: " + i);
                     setTextField("SHOW: " + i);
